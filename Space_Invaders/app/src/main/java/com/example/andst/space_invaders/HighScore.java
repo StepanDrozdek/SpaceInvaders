@@ -1,12 +1,17 @@
 package com.example.andst.space_invaders;
 
 import android.database.Cursor;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class HighScore extends AppCompatActivity {
@@ -44,5 +49,26 @@ public class HighScore extends AppCompatActivity {
         final ListAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listDataToShow);
         lv.setAdapter(adapter);
 
+    }
+
+    public void printToTxt(View view){
+
+        try {
+            File myFile = new File(Environment.getExternalStorageDirectory().getPath()+"/Tamz2HighScore.txt");
+            if (myFile.exists()){
+                myFile.delete();
+            }
+            myFile.createNewFile();
+            FileOutputStream fOut = new FileOutputStream(myFile);
+            OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+
+            for (String data: listDataToShow) {
+                myOutWriter.write(data);
+            }
+            myOutWriter.close();
+            fOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

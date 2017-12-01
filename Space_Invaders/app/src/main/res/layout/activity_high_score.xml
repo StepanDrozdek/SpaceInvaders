@@ -4,11 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.andst.space_invaders.HighScore">
+    tools:context="com.example.andst.space_invaders.HighScore"
+    android:orientation="vertical">
 
 
     <ListView
         android:id="@+id/listviewHighScore"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_weight="1"
+        android:layout_gravity="center"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:text="Print to TXT"
+        android:onClick="printToTxt"/>
 </LinearLayout>

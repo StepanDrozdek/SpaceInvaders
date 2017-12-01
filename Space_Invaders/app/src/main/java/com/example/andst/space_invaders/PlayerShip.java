@@ -96,6 +96,7 @@ public class PlayerShip {
             x = x + shipSpeed / fps;
         }
 
+
         // Update rect which is used to detect hits
         rect.top = y;
         rect.bottom = y + height;

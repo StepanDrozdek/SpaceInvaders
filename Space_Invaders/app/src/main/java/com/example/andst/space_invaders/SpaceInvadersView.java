@@ -1,6 +1,7 @@
 package com.example.andst.space_invaders;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Canvas;
@@ -106,6 +107,8 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
         ourHolder = getHolder();
         paint = new Paint();
         db = new DBHandler(context);
+
+
 
         screenX = x;
         screenY = y-50;
@@ -518,7 +521,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
 
                 paused = false;
 
-                if(motionEvent.getY() > screenY - screenY / 8) {
+               /* if(motionEvent.getY() > screenY - screenY / 8) {
                     if (motionEvent.getX() > screenX / 2) {
                         playerShip.setMovementState(playerShip.RIGHT);
                     } else {
@@ -526,7 +529,7 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
                     }
 
 
-                }
+                }*/
 
                 if(motionEvent.getY() < screenY - screenY / 8) {
                     // Shots fired
@@ -539,13 +542,23 @@ public class SpaceInvadersView extends SurfaceView implements Runnable{
 
 
             // Player has removed finger from screen
-            case MotionEvent.ACTION_UP:
+           /* case MotionEvent.ACTION_UP:
 
                 if(motionEvent.getY() > screenY - screenY / 10) {
                     playerShip.setMovementState(playerShip.STOPPED);
                 }
-                break;
+                break;*/
         }
         return true;
+    }
+
+    public void steerLeft(){
+        playerShip.setMovementState(playerShip.LEFT);
+    }
+    public void steerRight(){
+        playerShip.setMovementState(playerShip.RIGHT);
+    }
+    public void stay() {
+        playerShip.setMovementState(playerShip.STOPPED);
     }
 }
