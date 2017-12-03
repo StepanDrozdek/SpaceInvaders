@@ -35,12 +35,13 @@ public class HighScore extends AppCompatActivity {
         listData = new ArrayList<>();
         listDataToShow = new ArrayList<>();
         while (data.moveToNext()) {
-            //get the value from the database in column 1
+            //get the value from the database in column 1 and 2
             //then add it to the ArrayList
             listData.add(data.getString(1));
             listData.add(data.getString(2));
         }
 
+        //get data from column 1 and 2 into one row
         for(int i =0; i<listData.size();i=i+2){
             listDataToShow.add(listData.get(i) + " - " + listData.get(i+1));
         }
@@ -53,8 +54,10 @@ public class HighScore extends AppCompatActivity {
 
     public void printToTxt(View view){
 
+
         try {
             File myFile = new File(Environment.getExternalStorageDirectory().getPath()+"/Tamz2HighScore.txt");
+            //if file exists then delete it and create again with new data
             if (myFile.exists()){
                 myFile.delete();
             }

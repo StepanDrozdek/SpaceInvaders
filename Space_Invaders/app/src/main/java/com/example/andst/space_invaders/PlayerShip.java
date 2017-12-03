@@ -84,7 +84,7 @@ public class PlayerShip {
         shipMoving = state;
     }
 
-    // This update method will be called from update in SpaceInvadersView
+    // This update method will be called from update in SpaceView
     // It determines if the player ship needs to move and changes the coordinates
     // contained in x if necessary
     public void update(long fps){
